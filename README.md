@@ -1,2 +1,0 @@
-# Lambda
-Lambda learning page

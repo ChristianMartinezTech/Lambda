@@ -14,9 +14,9 @@
     <h1 class="title">Static Website Creator</h1>
     <p class="description">
         <p class="description">Hi there, folks!</p>
-        <p class="description">Are you tired of dynamic websites stealing all the attention? ✨<br>
+        <p class="description">Are you tired of dynamic websites stealing all the attention? 😒<br>
         Are you a Back-End developer afraid of CSS? ❌<br>
-        You don't have 5 hours to center a .div? 😒</p>
+        You don't have 5 hours to center a .div? 😭</p>
         <p class="description">Welcome to the Static Website Creator – where we bring back the glory of simplicity and minimalism. Create your website in a snap without any fancy database or server-side scripting.</p>
         <p class="description">Get ready to embrace the beauty of static! 👌</p>
     </p>
@@ -24,7 +24,7 @@
           <div class="form-group">
             <label for="websiteContent">Ready? 🧐 Describe your new website:</label>
             <textarea class="form-control" id="websiteContent" rows="5" required></textarea>
-          <button type="submit" class="btn btn-create">Create Website! 🚀</button>
+          <button type="submit" class="btn btn-create" onclick="submitForm()">Create Website! 🚀</button>
         </div>
         </form>
 
@@ -34,6 +34,25 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function submitForm() {
+    var formData = $('#websiteForm').serialize();
+    $.ajax({
+      type: 'POST',
+      url: 'https://2sdsigfw9g.execute-api.sa-east-1.amazonaws.com/Prod/chatgpt_website_creation',
+      data: formData,
+      success: function(response) {
+        console.log('Form data sent successfully:', response);
+        // Handle success response here
+      },
+      error: function(error) {
+        console.error('Error sending form data:', error);
+        // Handle error response here
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
